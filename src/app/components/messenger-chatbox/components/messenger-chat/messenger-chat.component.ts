@@ -181,13 +181,6 @@ export class MessengerChatComponent implements AfterViewInit {
             }, 100);
           },
         },
-        cubeEffect: {
-          shadowScale: 2,
-        },
-        coverflowEffect: {
-          rotate: 30,
-          slideShadows: true,
-        },
       });
     }, 100);
 
