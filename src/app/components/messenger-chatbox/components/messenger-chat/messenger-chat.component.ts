@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
-import Swiper from "swiper";
+import Swiper from "../../.././../../../lib/swiper";
 import { MessengerChatboxService } from "../../services/messenger-chatbox.service";
 import { chatBoxMessage } from "../../model/messenger-chatbox.model";
 import { Constants } from "src/app/components/shared/configs/constants";

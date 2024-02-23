@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from "@angular/core";
-import Swiper from "swiper";
+import Swiper from "../../../../../../lib/swiper";
 import { chatHeadUser } from "../../model/messenger-chatbox.model";
 import { MessengerChatboxService } from "../../services/messenger-chatbox.service";
 
