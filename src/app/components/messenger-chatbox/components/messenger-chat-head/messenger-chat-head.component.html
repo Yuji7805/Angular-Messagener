@@ -1,0 +1,47 @@
+<div class="messenger-chat-head">
+  <div class="selected-profile-picture-path">
+    <div *ngIf="selectedUser" style="color: bisque; text-align: center">
+      {{ selectedUser.profilePicture }}
+    </div>
+  </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper align-items-center">
+      <div
+        class="swiper-slide"
+        *ngFor="let user of users; let i = index"
+        (click)="selectUser(user)"
+      >
+        <div
+          style="display: flex; justify-content: center"
+          (pointerdown)="startHold($event)"
+          (pointerup)="cancelHold()"
+          (mouseleave)="cancelHold()"
+        >
+          <img
+            class="profile-picture"
+            [src]="user.profilePicture"
+            *ngIf="user !== selectedUser"
+          />
+          <lib-circle-progress
+            imageUrl="{{ user.profilePicture }}"
+            *ngIf="user === selectedUser"
+            class="selected"
+            [value]="user.id"
+            [max]="users.length"
+          ></lib-circle-progress>
+          <div
+            style="
+              position: absolute;
+              bottom: -25px;
+              left: 50%;
+              transform: translateX(-50%);
+              color: bisque;
+            "
+          >
+            {{ getPercentage(i) }}%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
