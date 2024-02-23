@@ -14,8 +14,8 @@
         <div
           style="display: flex; justify-content: center"
           (pointerdown)="startHold($event)"
-          (pointerup)="cancelHold()"
-          (mouseleave)="cancelHold()"
+          (pointerup)="cancelHold($event)"
+          (mouseleave)="cancelHold($event)"
         >
           <img
             class="profile-picture"

@@ -1,66 +1,213 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import Swiper from 'swiper';
-import { MessengerChatboxService } from '../../services/messenger-chatbox.service';
-import { chatBoxMessage } from '../../model/messenger-chatbox.model';
-import { Constants } from 'src/app/components/shared/configs/constants';
+import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
+import Swiper from "swiper";
+import { MessengerChatboxService } from "../../services/messenger-chatbox.service";
+import { chatBoxMessage } from "../../model/messenger-chatbox.model";
+import { Constants } from "src/app/components/shared/configs/constants";
 
 @Component({
-  selector: 'app-messenger-chat',
-  templateUrl: './messenger-chat.component.html',
-  styleUrls: ['./messenger-chat.component.scss']
+  selector: "app-messenger-chat",
+  templateUrl: "./messenger-chat.component.html",
+  styleUrls: ["./messenger-chat.component.scss"],
 })
 export class MessengerChatComponent implements AfterViewInit {
-
   chatboxSwiper: Swiper;
-  newMessageContent: string = '';
-  showEmojiPallet:boolean = false;
-  @ViewChild('attachmentInput') attachmentInput: ElementRef;
+  newMessageContent: string = "";
+  showEmojiPallet: boolean = false;
+  @ViewChild("attachmentInput") attachmentInput: ElementRef;
   userChatBox: chatBoxMessage[] = [
-    { userId: 1, messages: [{ content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?', type: 'sent', contentType: 'text' }] },
-    { userId: 2, messages: [{ content: 'Hi Jake2, how are you? I saw on the app that we’ve crossed paths several times this week', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?', type: 'sent', contentType: 'text' }] },
-    { userId: 3, messages: [{ content: 'Hi Jake3, how are you? I saw on the app that we’ve crossed paths several times this week', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?', type: 'sent', contentType: 'text' }] },
-    { userId: 4, messages: [{ content: 'Hi Jake4, how are you? I saw on the app that we’ve crossed paths several times this week', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?', type: 'sent', contentType: 'text' }] },
-    { userId: 5, messages: [{ content: 'Hi Jake5, how are you? I saw on the app that we’ve crossed paths several times this week', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?', type: 'sent', contentType: 'text' }] }
+    {
+      userId: 1,
+      messages: [
+        {
+          content:
+            "Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 2,
+      messages: [
+        {
+          content:
+            "Hi Jake2, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 3,
+      messages: [
+        {
+          content:
+            "Hi Jake3, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 4,
+      messages: [
+        {
+          content:
+            "Hi Jake4, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 5,
+      messages: [
+        {
+          content:
+            "Hi Jake5, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 6,
+      messages: [
+        {
+          content:
+            "Hi Jake6, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 7,
+      messages: [
+        {
+          content:
+            "Hi Jake7, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
+    {
+      userId: 8,
+      messages: [
+        {
+          content:
+            "Hi Jake8, how are you? I saw on the app that we’ve crossed paths several times this week",
+          type: "received",
+          contentType: "text",
+        },
+        {
+          content:
+            "Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?",
+          type: "sent",
+          contentType: "text",
+        },
+      ],
+    },
   ];
 
-  constructor(private messengerChatboxService: MessengerChatboxService) {
-  }
+  constructor(private messengerChatboxService: MessengerChatboxService) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       // initialize chat swiper with config
-      this.chatboxSwiper = new Swiper('.chat-swiper-container', {
+      this.chatboxSwiper = new Swiper(".chat-swiper-container", {
         slideToClickedSlide: true,
-        slideActiveClass: 'selected-slide',
+        slideActiveClass: "selected-slide",
         initialSlide: 2,
-        spaceBetween: 40,
+        spaceBetween: 10,
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 'auto',
+        slidesPerView: 3,
+        loop: true,
+        loopAdditionalSlides: 3,
         on: {
           // set index of service when slide change
           slideChange: () => {
             setTimeout(() => {
-              this.messengerChatboxService.setSelectedSlideIndex(this.chatboxSwiper?.realIndex);
+              let activeIndex = this.chatboxSwiper?.realIndex;
+              if (this.chatboxSwiper?.params.loop) {
+                // Adjust the active index for looped slides
+                activeIndex = this.chatboxSwiper?.activeIndex;
+              }
+              this.messengerChatboxService.setSelectedSlideIndex(activeIndex);
             }, 100);
-          }
-        }
+          },
+        },
+        cubeEffect: {
+          shadowScale: 2,
+        },
+        coverflowEffect: {
+          rotate: 30,
+          slideShadows: true,
+        },
       });
     }, 100);
 
     // subscribe to change slide observable
-    this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
+    this.messengerChatboxService.selectedSlideIndex$.subscribe((index) => {
       this.chatboxSwiper?.slideTo(index);
     });
   }
 
   // send message
   sendMessage() {
-    if (this.newMessageContent.trim() !== '') {
+    if (this.newMessageContent.trim() !== "") {
       const currentIndex = this.chatboxSwiper?.realIndex;
-      const newMessage = { content: this.newMessageContent, type: 'sent', contentType: 'text' };
+      const newMessage = {
+        content: this.newMessageContent,
+        type: "sent",
+        contentType: "text",
+      };
       this.userChatBox[currentIndex].messages.push(newMessage);
-      this.newMessageContent = '';
+      this.newMessageContent = "";
     }
   }
 
@@ -73,7 +220,7 @@ export class MessengerChatComponent implements AfterViewInit {
   handleFileSelect(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     const files = inputElement.files;
-    let fileIcon = 'files (1).svg';
+    let fileIcon = "files (1).svg";
 
     if (files && files.length > 0) {
       const currentIndex = this.chatboxSwiper?.realIndex;
@@ -82,11 +229,19 @@ export class MessengerChatComponent implements AfterViewInit {
       reader.onload = (e: any) => {
         // for display icon of file
         Constants.fileIconList.filter((row) => {
-          row.type == files[0].name?.split('.').pop() ? fileIcon = row.icon : '';
+          row.type == files[0].name?.split(".").pop()
+            ? (fileIcon = row.icon)
+            : "";
         });
-        const newMessage = { content: files[0], type: 'sent', contentType: 'attachment', fileUrl: e.target.result, fileIcon };
+        const newMessage = {
+          content: files[0],
+          type: "sent",
+          contentType: "attachment",
+          fileUrl: e.target.result,
+          fileIcon,
+        };
         this.userChatBox[currentIndex].messages.push(newMessage);
-        this.attachmentInput.nativeElement.value = '';
+        this.attachmentInput.nativeElement.value = "";
       };
 
       // Read the file as a data URL
@@ -96,11 +251,11 @@ export class MessengerChatComponent implements AfterViewInit {
 
   // check attachment file is image or not
   isImage(file: File): boolean {
-    return file.type.startsWith('image/');
+    return file.type.startsWith("image/");
   }
 
   // when click on emoji
-  addEmoji(event:any){
+  addEmoji(event: any) {
     this.newMessageContent = this.newMessageContent + event.emoji.native;
   }
 }

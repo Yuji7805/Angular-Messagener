@@ -51,7 +51,6 @@ export class MessengerChatHeadComponent implements AfterViewInit {
           },
         },
       });
-      console.log(this.chatHeadSwiper);
     }, 100);
 
     // subscribe to change slide observable
@@ -71,21 +70,29 @@ export class MessengerChatHeadComponent implements AfterViewInit {
     return Math.floor((i + 1) * (100 / this.users.length));
   }
 
-  startHold(event: MouseEvent): void {    
+  startHold(event?: MouseEvent): void {
+    event.preventDefault();
     // Clear any existing timeout to prevent multiple triggers
     if (this.holdTimeoutId) {
       clearTimeout(this.holdTimeoutId);
     }
 
+    (event.target as HTMLElement).addEventListener("pointerup", (event) => {
+      this.chatHeadSwiper.enable();
+    });
+
     // Set a new timeout for 1.5 seconds (1500 milliseconds)
-    this.holdTimeoutId = window.setTimeout(() => {      
-      alert("You are holding my header");
-      this.holdTimeoutId = undefined;      
+    this.holdTimeoutId = window.setTimeout(() => {
+      this.chatHeadSwiper.disable();
+      alert("You are holding my header.");
+      this.holdTimeoutId = undefined;
     }, 1500);
   }
 
-  cancelHold(): void {
-    console.log("canceling timer");
+  cancelHold(event?: MouseEvent): void {
+    if (event) {
+      event.preventDefault();
+    }
     // Clear the timeout if the mouse is released or leaves the div
     if (this.holdTimeoutId) {
       clearTimeout(this.holdTimeoutId);
